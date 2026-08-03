@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     margin:0;
     padding:0;
@@ -113,4 +114,534 @@ to{
 100%{
     transform:translateY(0px);
 }
+=======
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary: #6C63FF;
+    --primary-dark: #5A52D5;
+    --primary-light: #8B83FF;
+    --success: #00C853;
+    --error: #FF1744;
+    --warning: #FFC107;
+    --text-primary: #2D3748;
+    --text-secondary: #718096;
+    --bg-start: #667eea;
+    --bg-end: #764ba2;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1000px;
+    animation: slideUp 0.8s ease-out;
+}
+
+/* Login Wrapper */
+.login-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+/* Left Illustration */
+.login-illustration {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    padding: 60px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-illustration::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: pulse 8s ease-in-out infinite;
+}
+
+.illustration-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.shield-icon {
+    font-size: 80px;
+    margin-bottom: 30px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.shield-icon i {
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+}
+
+.illustration-content h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.illustration-content p {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+/* Right Form */
+.login-form {
+    padding: 50px 45px;
+    background: white;
+}
+
+.form-header {
+    margin-bottom: 35px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.logo i {
+    font-size: 28px;
+}
+
+.form-header h2 {
+    font-size: 28px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* Input Groups */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    position: relative;
+    margin-top: 5px;
+}
+
+/* FIXED: Input Fields - Text now properly visible */
+.input-field input {
+    width: 100%;
+    padding: 16px 45px 16px 45px;
+    font-size: 15px;
+    border: 2px solid #E2E8F0;
+    border-radius: 12px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: #F7FAFC;
+    color: #1A202C; /* DARK TEXT - fully visible */
+    font-weight: 500; /* Slightly bolder for better readability */
+    position: relative;
+    z-index: 2; /* Ensure text is above label */
+}
+
+.input-field input::placeholder {
+    color: #A0AEC0;
+    opacity: 0; /* Hide placeholder when label is present */
+}
+
+/* FIXED: Label positioning - doesn't overlap with text */
+.input-field label {
+    position: absolute;
+    left: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #718096;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    font-size: 14px;
+    background: transparent;
+    z-index: 1; /* Below input text */
+    padding: 0 4px;
+}
+
+/* FIXED: When input has content or is focused, label moves up */
+.input-field input:focus ~ label,
+.input-field input:not(:placeholder-shown) ~ label {
+    top: -8px;
+    transform: translateY(0) scale(0.85);
+    color: var(--primary);
+    background: white;
+    padding: 0 8px;
+    font-weight: 600;
+    z-index: 3; /* Above input */
+}
+
+/* FIXED: Input focus state */
+.input-field input:focus {
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.1);
+}
+
+/* Icon styling */
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #718096;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    z-index: 2; /* Above label, below text */
+}
+
+.input-field input:focus ~ .input-icon,
+.input-field input:not(:placeholder-shown) ~ .input-icon {
+    color: var(--primary);
+}
+
+/* Toggle password button */
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #718096;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+
+.toggle-password:hover {
+    color: var(--primary);
+}
+
+/* REMOVE Password Strength section */
+.password-strength {
+    display: none;
+}
+
+/* Error Messages */
+.error-message {
+    color: var(--error);
+    font-size: 12px;
+    margin-top: 5px;
+    min-height: 18px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.error-message.show {
+    opacity: 1;
+}
+
+.input-field.error input {
+    border-color: var(--error);
+}
+
+.input-field.error .input-icon {
+    color: var(--error);
+}
+
+/* Form Options */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 0 30px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-secondary);
+    position: relative;
+}
+
+.remember-me input {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #E2E8F0;
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.remember-me input:checked + .checkmark {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.remember-me input:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+}
+
+.forgot-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.forgot-link:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(108, 99, 255, 0.4);
+}
+
+.submit-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btn-loader {
+    display: none;
+}
+
+.submit-btn.loading .btn-text {
+    display: none;
+}
+
+.submit-btn.loading .btn-loader {
+    display: inline-block;
+}
+
+/* Register Link */
+.register-link {
+    text-align: center;
+    margin-top: 25px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.register-link a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: white;
+    padding: 18px 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transform: translateX(120%);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1000;
+    max-width: 400px;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--success);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.toast-content h4 {
+    color: var(--text-primary);
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+
+.toast-content p {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0 5px;
+    transition: color 0.3s ease;
+    margin-left: auto;
+}
+
+.toast-close:hover {
+    color: var(--text-primary);
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .login-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .login-illustration {
+        padding: 40px 30px;
+        min-height: 250px;
+    }
+    
+    .login-form {
+        padding: 30px 25px;
+    }
+    
+    .shield-icon {
+        font-size: 50px;
+    }
+    
+    .illustration-content h1 {
+        font-size: 28px;
+    }
+    
+    .features {
+        display: none;
+    }
+    
+    .toast {
+        top: 20px;
+        right: 20px;
+        left: 20px;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-form {
+        padding: 25px 20px;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+>>>>>>> e00b7a7 (Updated project)
 }
